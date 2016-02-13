@@ -1,5 +1,5 @@
 var request = require('request'),
-    Edges = require('./Edges.js'),
+    HackEdges = require('./Edges.js'),
     mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017');
@@ -22,24 +22,34 @@ var search_filters = {
 }
 
 var storedData = []
+
 request({
     method: 'POST',
     url: "http://www.healthmap.org/getAlerts.php",
     dataType: 'json',
     data: search_filters
 }, function(err, resp, jsonData) {
-    JsonData = JSON.parse(jsonData);
+
+    var JsonData = JSON.parse(jsonData);
+    console.log(JsonData)
+    var list = [];
     for (var l = 0; l < JsonData.markers.length; ++l) {
         var k = JsonData.markers[l].label.split(',')
-        var q = k.map(function(item) {
+        list = list.concat(k.map(function(item) {
             return {
                 lat: JsonData.markers[l].lat,
                 lon: JsonData.markers[l].lon,
                 label: item
             }
-            console.log(q);
-        });
-        storedData.push(q[0])
+        }));
     }
+    HackEdges.remove({}, function() {
+        HackEdges.collection.insert(list, function(err, num) {
+            if (err)
+                console.log(err);
+            process.exit();
+        });
+    })
+
 });
 //for (var i = 0; i < str)

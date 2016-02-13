@@ -1,10 +1,8 @@
-var mongoose = require('mongoose'),
+var mongoose = require('mongoose');
+var HackEdges = new mongoose.Schema({
+    lat: Number,
+    lon: Number,
+    label: String
+});
 
-
-    var Edges = new mongoose.Schema {
-        lat: Number,
-        lon: Number,
-        label: String
-    }
-
-module.export = mongoose.model('Eges', Edges)
+module.exports = mongoose.model('Edges', HackEdges)
