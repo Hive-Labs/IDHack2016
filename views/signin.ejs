@@ -1,0 +1,378 @@
+<head>
+  <title>GHCORPS</title>
+  <script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+  <script type="text/javascript" src="/bootstrap/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+  <style type="text/css">
+    @font-face {
+      font-family: 'Gotham-Light';
+      src: url('/bootstrap/fonts/Gotham-Light.ttf');
+    }
+
+    .navbar-brand {
+      font-size: 13pt;
+      font-family: 'Gotham-Light';
+      color: white !important;
+    }
+
+    .navbar-inverse {
+      background-color: rgba(56, 59, 65, 0.84);
+      border: none;
+    }
+
+    .navbar-inverse .navbar-nav .active a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+      background-color: #0B3563;
+    }
+
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+      background-color: #0B3563;
+    }
+
+    .navbar {
+      border-radius: 0px;
+      margin-bottom: 0px;
+      height: 50px;
+      min-height: 0px !important;
+      z-index: 10;
+    }
+
+    .navbar-nav {
+      height: 50px;
+    }
+    /*
+body{
+	padding-left:0px;
+	padding-right:0px;
+	background-image: url('/images/loginBackgroundImages/shaggy.jpg');
+	background-position-y: center;
+  background-size: cover;
+}
+*/
+
+    #background {
+      padding-left: 0px;
+      padding-right: 0px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100vw;
+      height: 100vh;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+      z-index: -1;
+    }
+
+    body:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #383b41;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .nameField {
+      float: left;
+      margin: 0px;
+      margin-right: 10px;
+    }
+
+    .modal-body {
+      font-size: 12pt;
+    }
+
+    .appContainer {
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 5px;
+      padding: 40px;
+      min-height: 500px;
+      text-align: center;
+      background-color: transparent;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Gotham-Light';
+      font-size: 20px !important;
+      color: white !important;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .btn {
+      border: 2px solid #29a468 !important;
+      border-radius: 4px !important;
+      font-family: 'Gotham-Light' !important;
+      height: 34px !important;
+      text-align: center !important;
+    }
+
+    .btn:hover {
+      border: 2px solid #29a468 !important;
+      border-radius: 4px !important;
+      font-family: 'Gotham-Light' !important;
+      height: 34px !important;
+      -webkit-transition: all 200ms ease-in-out 0s;
+      -moz-transition: all 200ms ease-in-out 0s;
+      -o-transition: all 200ms ease-in-out 0s;
+      transition: all 200ms ease-in-out 0s;
+    }
+
+    .btn-primary {
+      background-color: transparent !important;
+      background-image: none !important;
+      color: #29a468 !important;
+      font-weight: bold !important;
+      font-family: 'Gotham-Light' !important;
+      height: 34px !important;
+      float: right !important;
+      text-align: center !important;
+    }
+
+    .btn-primary:hover {
+      background-color: #29a468 !important;
+      border: 2px solid #29a468 !important;
+      border-radius: 4px !important;
+      color: #f1f1f1 !important;
+      font-weight: bold !important;
+      font-family: 'Gotham-Light' !important;
+      float: right !important;
+      -webkit-transition: all 200ms ease-in-out 0s;
+      -moz-transition: all 200ms ease-in-out 0s;
+      -o-transition: all 200ms ease-in-out 0s;
+      transition: all 200ms ease-in-out 0s;
+    }
+
+    .loginDiv {
+      text-align: center;
+      color: rgb(50, 50, 50) !important;
+      position: absolute;
+      width: 485px;
+      left: calc(50vw - 242px);
+      margin-bottom: 0;
+      top: calc(50vh - 94px);
+    }
+
+    .loginDiv input {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 280px;
+      margin-bottom: 15px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .loginDiv input:hover {
+      opacity: 0.7;
+      -webkit-transition: all 200ms ease-in-out 0s;
+      -moz-transition: all 200ms ease-in-out 0s;
+      -o-transition: all 200ms ease-in-out 0s;
+      transition: all 200ms ease-in-out 0s;
+    }
+    /*
+.thirdPartySignin{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	cursor: pointer;
+}
+.googleSignInButton{
+	background-image: url('/images/Red-signin-Long-base-44dp.png');
+  height: 33px;
+  width: 150px;
+  background-size: 150px;
+  border-radius: 5px;
+  float: left;
+}
+.googleSignInButton:hover{
+	background-image:url('/images/Red-signin-Long-hover-44dp.png');
+}
+.googleSignInButton:active{
+	background-image:url('/images/Red-signin-Long-press-44dp.png');
+}*/
+
+    .separatorBar {
+      margin-bottom: 5px;
+      margin-top: 3px;
+      border-bottom: 1px dotted rgb(16, 131, 255);
+      width: 100%;
+      height: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer {
+      float: left;
+      text-align: center;
+      background-color: rgba(56, 59, 65, 0.84);
+      ;
+      color: white;
+      width: 100%;
+      position: absolute;
+      bottom: 0px;
+    }
+
+    .hiveText {
+      font-size: 10.5pt;
+      margin-left: -17px;
+      margin-top: -12px;
+      font-weight: 500;
+      color: white;
+      opacity: .9;
+      margin-bottom: 0px;
+      position: absolute;
+    }
+
+    .notebookText {
+      margin-left: -18px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      color: white;
+      font-size: 18px;
+      color: #29a468;
+      position: absolute;
+    }
+
+    /*.signInText {
+      margin-bottom: 10px;
+    }
+    .signUpText {
+      margin-bottom: 10px;
+    }*/
+    .btn-primary {
+      padding: 0 20px;
+      margin-right: 10px; 
+    }
+    .alert-danger2 {
+      padding: 0px;
+      margin-left: auto;
+      width: 100%;
+      max-width: 300px;
+      margin-right: auto;
+      margin-top: 20px;
+      color: rgb(255, 176, 166);
+      display: none;
+    }
+
+    .loginInput {
+      display: block;
+      width: 100%;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.428571429;
+      color: #555;
+      vertical-align: middle;
+      background-color: transparent;
+      background-image: none;
+      border: 2px solid #f1f1f1;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      font-family: 'Gotham-Light';
+    }
+
+    .loginInput::-webkit-input-placeholder {
+      color: #f1f1f1;
+      font-family: 'Gotham-Light';
+      padding-top: 2px;
+      opacity: 0.5;
+    }
+
+    .loginInput:-moz-placeholder {
+      color: #f1f1f1;
+      font-family: 'Gotham-Light';
+      padding-top: 2px;
+      opacity: 0.5;
+    }
+
+    .loginInput::-moz-placeholder {
+      color: #f1f1f1;
+      font-family: 'Gotham-Light';
+      padding-top: 2px;
+      opacity: 0.5;
+    }
+
+    .loginInput:-ms-input-placeholder {
+      color: #f1f1f1;
+      font-family: 'Gotham-Light';
+      padding-top: 2px;
+      opacity: 0.5;
+    }
+
+    .buttonsDiv {
+      width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 35px;
+    }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function() {
+      var images = ['bluevan.jpg', 'canoelake.jpg', 'mtjump.jpg', 'shaggy.jpg', 'sunsetbeach.jpg'];
+      $('#background').css({
+        'background-image': 'url(/bootstrap/img/' + images[Math.floor(Math.random() * images.length)] + ')'
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="background"></div>
+  <div id="appContainer" class="appContainer jumbotron">
+    <form action="/home/" class="loginDiv">
+      <h1>Sign in to explore our application</h1>
+      <input type="text" class="loginInput" placeholder="Email Address" name="username">
+      <input type="password" class="loginInput" placeholder="Password" name="password">
+      <div class="buttonsDiv">
+        <button type="submit" class="btn btn-primary">
+          <div class="signInText">Sign In</div>
+        </button>
+        <button type="submit" class="btn btn-primary">
+          <div class="signUpText">Sign Up</div>
+        </button>
+        <!--<div class="thirdPartySignin googleSignInButton" onClick="window.location = '/auth/google';">
+  		</div>-->
+      </div>
+      <div class="alert-danger2">
+        Incorrect email or password.
+      </div>
+    </form>
+  </div>
+  <link href='http://fonts.googleapis.com/css?family=Lily+Script+One|Montserrat+Alternates|Roboto+Slab' rel='stylesheet' type='text/css'>
+  <!--<div class="footer">
+        © Hive Labs, 2015
+</div>-->
+</body>
+<script type="text/javascript">
+  function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
+  if (getParameterByName('loginFailed') == "true") {
+    $('.alert-danger2').show();
+  } else {
+    $('.alert-danger2').hide();
+  }
+</script>
