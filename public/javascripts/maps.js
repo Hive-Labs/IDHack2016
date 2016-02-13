@@ -119,7 +119,7 @@ function initialize() {
     zoom: 3
   };
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  setTimeout(function(){
+  setTimeout(function() {
     $.getJSON('/api/edges', function(data) {
       for (var i in data) {
         addMarker(data[i], i);
@@ -133,7 +133,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function addMarker(item, timeout) {
   var latlng = new google.maps.LatLng(item.lat, item.lon);
-  setTimeout(function(){
+  setTimeout(function() {
     var marker = new google.maps.Marker({
       position: latlng,
       map: map,
