@@ -1,7 +1,0 @@
-var $ = require('cheerio')
-var search_filters = {
-    "locations": "0",
-    "diseases":"",
-    "sources":"",
-    "species":"",
-    "

@@ -2,6 +2,7 @@ var request = require('request'),
     HackEdges = require('./Edges.js'),
     mongoose = require('mongoose');
 
+/* Begin Block for Disease outbreak location points */
 mongoose.connect('mongodb://localhost:27017');
 
 var search_filters = {
@@ -21,8 +22,7 @@ var search_filters = {
     "default_country": ["106"]
 }
 
-var storedData = []
-
+// Scrape for the outbreak log generated
 request({
     method: 'POST',
     url: "http://www.healthmap.org/getAlerts.php",
@@ -39,7 +39,7 @@ request({
             return {
                 lat: JsonData.markers[l].lat,
                 lon: JsonData.markers[l].lon,
-                label: item
+                label: item.trim()
             }
         }));
     }
