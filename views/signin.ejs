@@ -4,6 +4,8 @@
   <script type="text/javascript" src="/bootstrap/js/jquery-ui.min.js"></script>
   <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
   <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bootstrap/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/signin.css">
   <style type="text/css">
     @font-face {
       font-family: 'Gotham-Light';
@@ -247,17 +249,18 @@ body{
       color: #29a468;
       position: absolute;
     }
-
     /*.signInText {
       margin-bottom: 10px;
     }
     .signUpText {
       margin-bottom: 10px;
     }*/
+
     .btn-primary {
       padding: 0 20px;
-      margin-right: 10px; 
+      margin-right: 10px;
     }
+
     .alert-danger2 {
       padding: 0px;
       margin-left: auto;
@@ -354,6 +357,11 @@ body{
       </div>
       <div class="alert-danger2">
         Incorrect email or password.
+      </div>
+      <div id="socialnetworks">
+        <a href="/auth/facebook" class="btn btn-block btn-facebook btn-social"><i class="fa fa-facebook"></i>Sign in with Facebook</a>
+        <a href="/auth/google" class="btn btn-block btn-google-plus btn-social"><i class="fa fa-google-plus"></i>Sign in with Google</a>
+        <a href="/auth/linkedin" class="btn btn-block btn-linkedin btn-social"><i class="fa fa-linkedin"></i>Sign in with LinkedIn</a>
       </div>
     </form>
   </div>
