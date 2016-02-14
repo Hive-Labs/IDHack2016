@@ -1,6 +1,6 @@
 IDHack 2016
 =========
-####Expert networking and awareness of global disasters. 
+####Expert networking and awareness of global disasters.
 #####Version 1.0
 
 
@@ -11,7 +11,7 @@ IDHack 2016
 Features
 --------------
 - Map of prevalent diseases around the world (live view)
-- News feed for the Global Health Corp using public medium 
+- News feed for the Global Health Corp using public medium
 - List of fellows within organization
 - Job posting list from existing Global Health Corp website
 - Wikipedia information box on the home page for further information
@@ -19,14 +19,14 @@ Features
 
 
 
-Tech
+Technology
 --------------
 
 IDHack2016 uses a number of API's/Platforms to work properly:
 
 - [Node.js] - Evented I/O for the backend
 - [Express.js] - Framework used to build the REST-based backend
-- [jQuery] - Obvious things are obvious 
+- [jQuery] - Obvious things are obvious
 
 
 How Backend Works

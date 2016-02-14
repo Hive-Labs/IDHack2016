@@ -1,3 +1,6 @@
+/**
+ * Google Map API configuration
+ */
 var map_style = [{
   "featureType": "administrative.locality",
   "elementType": "all",

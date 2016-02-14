@@ -55,7 +55,7 @@ app.use('/api/names', function(req, res) {
     res.json(result);
   });
 });
-// Each name
+// API for each virus name
 app.use('/api/virus/:name', function(req, res) {
   var name = req.params.name;
   db.HackEdges.find({
@@ -64,7 +64,7 @@ app.use('/api/virus/:name', function(req, res) {
     res.json(result);
   });
 });
-// Get shit from Wikipedia
+// Get data from Wikipedia API
 app.use('/api/wiki/:name', function(req, res) {
   var name = req.params.name;
   console.log(JSON.stringify(name));
@@ -153,6 +153,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(app.get("port"));
-
+console.log("Server is listening at port: " + process.env.PORT || 9000);
 
 module.exports = app;

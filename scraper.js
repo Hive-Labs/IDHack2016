@@ -43,21 +43,19 @@ request({
       }
     }));
   }
-  /* HackEdges.remove({}, function() {
-      HackEdges.collection.insert(list, function(err, num) {
-          if (err)
-              console.log(err);
-          process.exit();
-      });
-  })*/
-
 });
 
 /* End Block for Disease Log DB Population */
 
 /* Begin Block for Corporate log DB Population */
-var pushMeSenpai = []
+var pushMeSenpai = [];
 
+/**
+ * finalDone() push all data that were passed into the database
+ *
+ * @param
+ * @return
+ */
 function finalDone() {
   //  console.log(pushMeSenpai)
   JobEdges.remove({}, function() {
@@ -72,6 +70,14 @@ function finalDone() {
   });
 }
 
+/**
+ * fellowshipPostions()
+ *
+ * @param {String} Error
+ * @param {String} response
+ * @param {String} html
+ * @return
+ */
 function fellowshipPostions(err, resp, html) {
   var parsedHTML = cheerio.load(html);
   var links = parsedHTML('a.title_ct');
@@ -88,6 +94,14 @@ function fellowshipPostions(err, resp, html) {
   });
 }
 
+/**
+ * fellowshipPositionParse()
+ *
+ * @param {String} Error
+ * @param {String} response
+ * @param {String} html
+ * @return
+ */
 function fellowshipPositionParse(err, resp, html) {
   var parseHTML = cheerio.load(html);
   var dict = makeMeAMap();
@@ -131,6 +145,12 @@ function fellowshipPositionParse(err, resp, html) {
   console.log(pushMeSenpai);
 }
 
+/**
+ * makeMeAMap()
+ *
+ * @param
+ * @return
+ */
 function makeMeAMap() {
   var newDict = {
     JobTitle: "", // Will be populated at the point that needs it in a bit
